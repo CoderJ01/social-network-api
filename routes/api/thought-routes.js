@@ -13,9 +13,9 @@ router
     .get(getAllThought)
     .post(createThought);
 
-// /api/thoughts/:id
+// /api/thoughts/:thoughtId
 router
-    .route('/:id')
+    .route('/:thoughtId')
     .get(getThoughtById)
     .put(updateThought)
     .delete(deleteThought);
