@@ -95,7 +95,31 @@ const thoughtController = {
         });
     },
 
-    // // update thought by id
+    // update thought by id
+    updateThought({ params }, res) {
+        Thought.findOneAndUpdate({ _id: params.thoughtId })
+        .then(updatedThought => {
+            if (!updatedThought) {
+                return res.status(404).json({ message: 'No thought found with this id.' });
+            }
+            return User.findOneAndUpdate(
+                { _id: params.userId },
+                { $each: {thought: params.thoughtId }},
+                { new: true }
+            );
+        })
+        .then(dbUserData => {
+            if (!dbUserData) {
+                res.status(404).json({ message: 'No user found with this id' });
+                return;
+            }
+            res.json(dbUserData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.json(err);
+        });
+    },
 
     // delete thought by id
     deleteThought({ params }, res) {
