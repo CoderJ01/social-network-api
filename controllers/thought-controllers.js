@@ -10,8 +10,7 @@ const thoughtController = {
         Thought.find(params)
         .then(({ _id }) => {
             return User.find(
-                { _id: params.userId },
-                { $all: { thoughts: _id } }
+                { _id: params.userId }
             );
         })
         .then(dbUserData => {
@@ -36,7 +35,7 @@ const thoughtController = {
             }
             return User.findOne(
                 { _id: params.userId },
-                { $elemMatch: { thought: body.thoughtId }},
+                { $elemMatch: { thought: params.thoughtId }},
                 { new: true }
             );
         })
