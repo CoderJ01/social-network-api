@@ -4,7 +4,6 @@ const seedUsers = require('./user-seeds');
 const seedThoughts = require('./thought-seeds');
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/3001', {
-  // useFindAndModify: false,
   useNewUrlParser: true,
   useUnifiedTopology: true
 });

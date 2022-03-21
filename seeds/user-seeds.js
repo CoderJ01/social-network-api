@@ -1,5 +1,5 @@
 const seedUsers = () => {
-    
+
     const userData = [
         {
             username: 'jellybeanboy',
