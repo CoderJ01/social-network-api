@@ -10,11 +10,11 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/3001', {
 
 const seedDB = async () => {
     await User.deleteMany({});
-    await User.insertMany(seedUsers);
+    await User.insertMany(seedUsers());
     console.log('================== USERS SEEDED ==================');
 
     await Thought.deleteMany({});
-    await Thought.insertMany(seedThoughts);
+    await Thought.insertMany(seedThoughts());
     console.log('================== THOUGHTS SEEDED ==================');
 }
 

@@ -12,7 +12,8 @@ const UserSchema = new Schema(
         email: {
             type: String,
             required: true,
-            unique: true
+            unique: true,
+            match: [/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/, 'Invalid email']
         },
         thoughts: [
             {
@@ -40,10 +41,10 @@ UserSchema.virtual('friendCount').get(function() {
 });
 
 // set up email validation
-UserSchema.path('email').validate(function (email) {
-    const emailRegex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
-    return emailRegex.text(email.text);
-}, 'The e-mail field cannot be empty');
+// UserSchema.path('email').validate(function (email) {
+//     const emailRegex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+//     return emailRegex.text(email.text);
+// }, 'The e-mail field cannot be empty');
 
 const User = model('User', UserSchema);
 

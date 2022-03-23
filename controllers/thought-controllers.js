@@ -8,7 +8,7 @@ const thoughtController = {
     // get all thoughts
     getAllThought( {params}, res) {
         Thought.find(params)
-        .then(({ _id }) => {
+        .then(({}) => {
             return User.find(
                 { _id: params.userId }
             );
@@ -28,14 +28,14 @@ const thoughtController = {
 
     // get one thought by id
     getThoughtById({ params }, res) {
-        Thought.findOne({ _id: params.id })
+        Thought.findOne({ _id: params.thoughtId })
         .then(retrievedThought => {
             if (!retrievedThought) {
                 return res.status(404).json({ message: 'No thought found with this id' });
             }
             return User.findOne(
                 { _id: params.userId },
-                { $elemMatch: { thought: params.thoughtId }},
+                // { $elemMatch: { thought: params.thoughtId }},
                 { new: true }
             );
         })
@@ -48,7 +48,7 @@ const thoughtController = {
         })
         .catch(err => {
             console.log(err);
-            res.sendStatus(400);
+            // res.sendStatus(400);
         });
     },
 
@@ -153,7 +153,7 @@ const thoughtController = {
     deleteReaction( {params}, res) {
         Thought.findByIdAndUpdate(
             { _id: params.thoughtId },
-            { $pull: {reactions: { reactionId: params.reactionId } } },
+            { $pull: {reactions: { reactionId: params.reactionId } }},
             { new: true }
         )
         .then(dbUserData => {
