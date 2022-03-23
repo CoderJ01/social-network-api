@@ -40,12 +40,6 @@ UserSchema.virtual('friendCount').get(function() {
     return this.friends.length;
 });
 
-// set up email validation
-// UserSchema.path('email').validate(function (email) {
-//     const emailRegex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
-//     return emailRegex.text(email.text);
-// }, 'The e-mail field cannot be empty');
-
 const User = model('User', UserSchema);
 
 module.exports = User;

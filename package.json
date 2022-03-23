@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "seed" : "node seeds/index.js"
+    "seed": "node seeds/seed.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
   "homepage": "https://github.com/CoderJ01/social-network-api#readme",
   "dependencies": {
     "express": "^4.17.3",
-    "mongoose": "^6.2.7"
+    "mongoose": "^6.2.7",
+    "mongoose-seed": "^0.6.0"
   }
 }
