@@ -1,7 +1,7 @@
 const seeder = require('mongoose-seed');
 
 // Connect to MongoDB via Mongoose
-seeder.connect('mongodb://localhost/3001', function () {
+seeder.connect('mongodb://localhost/3001', function () { // <-- The error messsage is caused by this
 
     // Load Mongoose models
     seeder.loadModels([
@@ -18,6 +18,11 @@ seeder.connect('mongodb://localhost/3001', function () {
     });
 });
 
+// if (VALID_OPTIONS.indexOf(key) === -1) throw new Error(`\`${key}\` is an invalid option.`);
+// ^
+// Error: `useCreateIndex` is an invalid option.
+
+// DEBUG: Error message has nothing to do with data, loadModels, nor clearModels respectively
 const data = [
     {
         'model': 'User',
