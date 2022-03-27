@@ -27,25 +27,24 @@ const thoughtController = {
     },
 
     // get one thought by id
-    getThoughtById({ params }, res) {
+    getThoughtById({ params, body }, res) {
         Thought.findOne({ _id: params.thoughtId })
         .then(retrievedThought => {
             if (!retrievedThought) {
                 return res.status(404).json({ message: 'No thought found with this id' });
             }
-            return User.findOne(
-                { _id: params.userId },
-                // { $elemMatch: { thought: params.thoughtId }},
-                { new: true }
-            );
+            // return User.findOne(
+            //     { _id: body.userId },
+            // );
+            res.json(retrievedThought);
         })
-        .then(dbUserData => {
-            if (!dbUserData) {
-                res.status(404).json({ message: 'No user found with this id' });
-                return;
-            }
-            res.json(dbUserData);
-        })
+        // .then(dbUserData => {
+        //     if (!dbUserData) {
+        //         res.status(404).json({ message: 'No user found with this id' });
+        //         return;
+        //     }
+        //     res.json(dbUserData);
+        // })
         .catch(err => {
             console.log(err);
             // res.sendStatus(400);
