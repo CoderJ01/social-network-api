@@ -24,12 +24,12 @@ router
 
 // /api/users/friends
 router
-    .route('/friends')
+    .route('/:userId/friends')
     .post(addFriend);
 
 // /api/users/:friendId
 router
-    .route('/:friendId')
+    .route('/userId/:friendId')
     .delete(deleteFriend);
 
 module.exports = router;
