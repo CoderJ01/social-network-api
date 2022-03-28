@@ -95,7 +95,6 @@ const thoughtController = {
                 // { $set: { thought: params.thoughtId }},
                 // { new: true }
             );
-            // res.json(updatedThought);
         })
         .then(dbUserData => {
             if (!dbUserData) {
@@ -138,7 +137,7 @@ const thoughtController = {
 
     // remove reaction
     deleteReaction( {params}, res) {
-        Thought.findByIdAndUpdate(
+        Thought.findOneAndUpdate(
             { _id: params.thoughtId },
             { $pull: {reactions: { reactionId: params.reactionId } }},
             { new: true }

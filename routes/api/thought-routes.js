@@ -29,7 +29,7 @@ router
 
 // /api/thoughts/:userId/:reactionId
 router
-    .route('/:thoughtId/:reactionId')
+    .route('/:userId/:thoughtId/:reactionId')
     .delete(deleteReaction);
 
 module.exports = router;
