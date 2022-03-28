@@ -135,7 +135,7 @@ const thoughtController = {
         });
     },
 
-    // remove reaction
+    // remove reaction by id
     deleteReaction( {params}, res) {
         Thought.findOneAndUpdate(
             { _id: params.thoughtId },
