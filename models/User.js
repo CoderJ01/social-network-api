@@ -1,3 +1,4 @@
+const { default: mongoose } = require('mongoose');
 const { Schema, model } = require('mongoose');
 
 // set up schema for User
@@ -23,14 +24,14 @@ const UserSchema = new Schema(
         ],
         friends: [
             {
-                type: Schema.Types.ObjectId,
+                type: mongoose.Types.ObjectId,
                 ref: 'User'
             }
         ]
     },
     {
         toJSON: {
-            virtuals: true, // set up friendCount to not be stored in MongolDB
+            virtuals: true, 
         }
     }
 );

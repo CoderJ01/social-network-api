@@ -23,7 +23,6 @@ const userController = {
         .catch(err => {
             console.log(err);
             res.sendStatus(400);
-            console.log('ERROR');
         });
     },
 
@@ -70,7 +69,7 @@ const userController = {
     // add friend to user
     addFriend({ params, body}, res) {
         User.findOneAndUpdate(
-            { _id: params.friendId },
+            { _id: params.userId },
             { $push: {friends: body} },
             { new: true, runValidators: true}
         )
@@ -99,6 +98,7 @@ const userController = {
         })
         .catch(err => {
             console.log(err);
+            res.json(err);
         });
     },
 }
