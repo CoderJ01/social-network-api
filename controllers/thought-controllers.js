@@ -90,19 +90,20 @@ const thoughtController = {
                 res.status(404).json({ message: 'No thought found with this id.' });
                 return;
             }
-            return User.findOneAndUpdate(
-                { _id: params.userId},
-                // { $set: { thought: params.thoughtId }},
-                // { new: true }
-            );
+            // return User.findOneAndUpdate(
+            //     { _id: params.userId },
+            //     { $set: { _id: params.userId }},
+            //     { new: true }
+            // );
+            res.json(updatedThought);
         })
-        .then(dbUserData => {
-            if (!dbUserData) {
-                res.status(404).json({ message: 'No user found with this id' });
-                return;
-            }
-            res.json(dbUserData);
-        })
+        // .then(dbUserData => {
+        //     if (!dbUserData) {
+        //         res.status(404).json({ message: 'No user found with this id' });
+        //         return;
+        //     }
+        //     res.json(dbUserData);
+        // })
         .catch(err => {
             console.log(err);
             res.json(err);
