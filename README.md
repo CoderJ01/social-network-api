@@ -16,7 +16,7 @@ This API is designed for a social media startup. Upon entering the command to ru
     * npm i mongoose
 
 ## Walkthrough Video
-<!-- [Video](./assets/videos/social-network-API.mp4) -->
+[Video](https://github.com/CoderJ01/social-network-api/tree/main/assets/videos) 
 
 ## Contribution
 CoderJ01 
